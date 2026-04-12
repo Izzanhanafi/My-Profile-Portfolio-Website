@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Izzan Fieldi - Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-transition">
+
+    <div id="loader">
+        <div class="loader-content">
+            <span id="counter">000</span>
+        </div>
+    </div>
+
+    <header class="jas-header" id="header">
+        <nav class="container">
+            <div class="location">
+                <span>PALEMBANG, ID</span> • <span id="live-time">00:00:00</span>
+            </div>
+            <a href="index.html#hero" class="logo">
+                <img src="Asset/Logo Izzan.png" alt="Muhammad Izzan Fieldi Logo" class="logo-img">
+            </a>
+
+            <ul class="jas-nav" id="nav-menu">
+                <li><a href="#hero" data-text="HOME">HOME</a></li>
+                <li><a href="#portfolio-section" data-text="PORTFOLIO">PORTFOLIO</a></li>
+                <li><a href="#experiences-section" data-text="EXPERIENCES">EXPERIENCES</a></li>
+                <li><a href="#about-section" data-text="ABOUT">ABOUT</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle">🌙</button>
+                <div class="hamburger" id="hamburger">
+                   <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <h1 class="hero-name" id="interactive-name">IZZAN FIELDI</h1>
+            
+            <div class="hero-footer">
+                <p>I AM A</p>
+                
+                <div class="role-slider">
+                    <div class="role-list">
+                        <span>HCI RESEARCHER</span>
+                        <span>ERP FUNCTIONAL</span>
+                        <span>UX/UI DESIGNER</span>
+                        <span>SYSTEM ANALYST</span>
+                        <span>DATA ANALYST</span>
+                        <span>HCI RESEARCHER</span> 
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            <span>SYSTEM /DATA ANALYSIS • HCI RESEARCH • UX/UI DESIGN • ERP FUNCTIONAL • </span>
+            <span>SYSTEM /DATA ANALYSIS • HCI RESEARCH • UX/UI DESIGN • ERP FUNCTIONAL • </span>
+            <span>SYSTEM /DATA ANALYSIS • HCI RESEARCH • UX/UI DESIGN • ERP FUNCTIONAL • </span>
+        </div>
+    </div>
+
+    <section id="portfolio-section" class="section-padding">
+        <div class="container">
+            <h2>FEATURED WORKS</h2>
+            <div class="portfolio-list">
+                
+                <a href="wms-casestudy.html" class="portfolio-row">
+                    <div class="port-left-group">
+                        <div class="port-title-wrapper">
+                            <span class="port-num">01</span>
+                            <h3 class="port-title">Warehouse Management System</h3>
+                        </div>
+                        <p class="port-tags">UI/UX Research • TCSD Method • Journal Published</p>
+                    </div>
+                    
+                    <div class="port-right-group">
+                        <div class="inline-img-wrapper">
+                            <img src="Asset/Porto.png" alt="WMS Project">
+                        </div>
+                        <span class="port-arrow">↗</span>
+                    </div>
+                </a>
+
+                <div class="portfolio-row" style="opacity: 0.7; cursor: not-allowed;">
+                    <div class="port-left-group">
+                        <div class="port-title-wrapper">
+                            <span class="port-num">02</span>
+                            <h3 class="port-title" style="color: var(--muted-text);">Odoo Functional Module</h3>
+                        </div>
+                        <p class="port-tags">ERP • Business Process • <span style="color: var(--accent-color); font-weight: 800;">[ WORK IN PROGRESS ]</span></p>
+                    </div>
+                    
+                    <div class="port-right-group">
+                        <span class="port-arrow" style="transform: none; color: var(--muted-text);">⏳</span>
+                    </div>
+                </div>
+
+                <a href="https://drive.google.com/drive/folders/1CFxZU8jh6CRHiEDkZTJFdUZa_HbZFmdo?usp=sharing" class="portfolio-row" target="_blank" rel="noopener noreferrer">
+                    <div class="port-left-group">
+                        <div class="port-title-wrapper">
+                            <span class="port-num">03</span>
+                            <h3 class="port-title">Visual Design Archive</h3>
+                        </div>
+                        <p class="port-tags">Poster • Identity • Apparel • Branding</p>
+                    </div>
+                    
+                    <div class="port-right-group">
+                        <div class="inline-img-wrapper">
+                            <img src="Asset/Denim Jacket.png" alt="Visual Design Archive">
+                        </div>
+                        <span class="port-arrow">↗</span>
+                    </div>
+                </a>
+                
+            </div>
+
+            <h2 style="margin-top: 80px;">RESEARCH & PUBLICATIONS</h2>
+            <div class="research-item">
+                <h3>Human Computer Interaction Design in Web Based Warehouse Management Systems</h3>
+                <p><strong>Method Used:</strong> Task Centered System Design (TCSD).</p>
+                <a href="https://ejournal.ikado.ac.id/index.php/teknika/article/view/1375" class="btn-secondary" target="_blank" rel="noopener noreferrer">View Published Journal ↗</a>
+            </div>
+            <div class="research-item">
+                <h3>Deepseek Sentiment Analysis Based on Google Play Store Reviews Using Naive Bayes Method</h3>
+                <p><strong>Method Used:</strong> Sentiment Analysis.</p>
+                <a href="https://ojs.stmik-banjarbaru.ac.id/index.php/jutisi/article/view/2778" class="btn-secondary" target="_blank" rel="noopener noreferrer">View Published Journal ↗</a>
+            </div>
+            <div class="research-item">
+                <h3>Comparison of K-Means, K-Medoid, and DBSCAN for Clustering Quality of Life</h3>
+                <p><strong>Method Used:</strong> Comparative analysis of clustering algorithms.</p>
+                <a href="https://ejournal.itn.ac.id/index.php/jati/article/view/13916" class="btn-secondary" target="_blank" rel="noopener noreferrer">View Published Journal ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiences-section" class="section-padding">
+        <div class="container">
+            
+            <h2>PROFESSIONAL & LEADERSHIP EXPERIENCE</h2>
+            <div class="experience-list">
+    
+                <div class="exp-row">
+                    <div class="exp-left" style="width: 100%;">
+                        <span class="exp-date">DEC 2024 — JAN 2025</span>
+                        <h3 class="exp-role">Warehouse Operations Intern</h3>
+                        <p class="exp-company">PT. TELKOM AKSES</p>
+                        <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.6; opacity: 0.85;">
+                            <li>Analyzed warehouse business processes and identified system requirements using the Task-Centered System Design (TCSD) methodology.</li>
+                            <li>Conducted physical inventory reconciliation (Stock Opname) and monitored daily outbound/inbound material distribution.</li>
+                            <li>Redesigned the Warehouse Management System (WMS) interface to streamline logistics recording and improve operational efficiency.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-row">
+                    <div class="exp-left" style="width: 100%;">
+                        <span class="exp-date">DEC 2023 — DEC 2024</span>
+                        <h3 class="exp-role">Vice Chairman</h3>
+                        <p class="exp-company">HIMSI FASILKOM UNSRI</p>
+                        <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.6; opacity: 0.85;">
+                            <li>Assisted in leading overall organizational operations and supervised cross-functional divisions.</li>
+                            <li>Spearheaded the strategic planning and development of the annual activity calendar to ensure alignment with organizational objectives.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-row">
+                    <div class="exp-left" style="width: 100%;">
+                        <span class="exp-date">OCT 2023 — OCT 2024</span>
+                        <h3 class="exp-role">Creative Design Member</h3>
+                        <p class="exp-company">Google Developer Group on Campus: UNSRI</p>
+                        <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.6; opacity: 0.85;">
+                            <li>Designed visual solutions and infographics to effectively communicate complex information for events and social media.</li>
+                            <li>Collaborated closely with cross-divisional teams to maintain consistent visual branding and identity across all community programs.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-row">
+                    <div class="exp-left" style="width: 100%;">
+                        <span class="exp-date">SEP 2023 — DEC 2024</span>
+                        <h3 class="exp-role">Steering Committee</h3>
+                        <p class="exp-company">Ikatan Bujang Gadis Fasilkom Unsri</p>
+                        <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.6; opacity: 0.85;">
+                            <li>Oversaw the Organizer Committee, ensuring all work programs were executed in line with the organization's strategic goals.</li>
+                            <li>Conducted comprehensive program evaluations and provided strategic problem-solving support during project execution.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <h2 style="margin-top: 100px; text-align: center; border-bottom: 2px solid var(--text-color); padding-bottom: 20px;">ACADEMIC IMPACT</h2>
+            
+            <div class="impact-brutal-grid">
+                <div class="impact-brutal-item">
+                    <span class="impact-giant-number">3.95</span>
+                    <h3 class="impact-title">CUM LAUDE GPA</h3>
+                    <p class="impact-desc">Excellence in Information Systems studies.</p>
+                </div>
+                
+                <div class="impact-brutal-item">
+                    <span class="impact-giant-number">03</span>
+                    <h3 class="impact-title">PUBLICATIONS</h3>
+                    <p class="impact-desc">Peer-reviewed contributions to HCI, data clustering, and sentiment analysis.</p>
+                </div>
+                
+                <div class="impact-brutal-item">
+                    <span class="impact-giant-number">TOP</span>
+                    <h3 class="impact-title">FINALIST</h3>
+                    <p class="impact-desc">National-level scientific competition recognition.</p>
+                </div>
+            </div>
+
+           <h2 style="margin-top: 100px; text-align: center;">CORE SKILLS & COMPETENCIES</h2>
+            
+            <div class="comp-category" style="margin-top: 50px; margin-bottom: 40px;"> 
+                <h3 style="text-align: center; margin-bottom: 20px; font-size: 1.2rem; color: var(--accent-color); text-transform: uppercase;">ERP & System Analysis</h3>
+                <div class="tags" style="justify-content: center;"> 
+                    <span class="tag">Business Process Modeling</span> 
+                    <span class="tag">Warehouse Operations (WMS)</span> 
+                    <span class="tag">Requirements Gathering</span> 
+                    <span class="tag">ERP Fundamentals</span> 
+                    <span class="tag">Supply Chain Workflows</span>
+                </div> 
+            </div> 
+
+            <div class="comp-category" style="margin-bottom: 40px;"> 
+                <h3 style="text-align: center; margin-bottom: 20px; font-size: 1.2rem; color: var(--accent-color); text-transform: uppercase;">Data & Research</h3>
+                <div class="tags" style="justify-content: center;"> 
+                    <span class="tag">Data Clustering Algorithms</span> 
+                    <span class="tag">Sentiment Analysis</span> 
+                    <span class="tag">Quantitative Research</span> 
+                    <span class="tag">Data-Driven Evaluation</span> 
+                </div> 
+            </div>
+
+            <div class="comp-category" style="margin-bottom: 40px;"> 
+                <h3 style="text-align: center; margin-bottom: 20px; font-size: 1.2rem; color: var(--accent-color); text-transform: uppercase;">HCI & Visual Design</h3>
+                <div class="tags" style="justify-content: center;"> 
+                    <span class="tag">UX/UI Prototyping (Figma)</span> 
+                    <span class="tag">Task Centered System Design</span> 
+                    <span class="tag">Usability Testing</span> 
+                    <span class="tag">Visual Communication</span> 
+                </div> 
+            </div> 
+
+            <div class="comp-category"> 
+                <h3 style="text-align: center; margin-bottom: 20px; font-size: 1.2rem; color: var(--accent-color); text-transform: uppercase;">Strategy & Leadership</h3>
+                <div class="tags" style="justify-content: center;"> 
+                    <span class="tag">Project Management</span> 
+                    <span class="tag">Cross-divisional Coordination</span> 
+                    <span class="tag">Strategic Planning</span> 
+                    <span class="tag">Problem Solving</span> 
+                </div> 
+            </div>
+        </div>
+    </section>
+
+    <section id="about-section" class="section-padding" style="background-color: var(--secondary-bg);">
+        <div class="container">
+            <h1 class="about-title" id="about-izzan">ABOUT IZZAN</h1>
+            
+            <div class="about-image-wrapper">
+            <div class="about-image-container">
+            <img src="Asset/PTB_0155.jpeg" alt="Izzan Yudisium" class="about-img">
+                <div class="grain-overlay"></div>
+            </div>
+            <div class="about-caption">
+                <span>B.A. IN INFORMATION SYSTEMS</span>
+                <span>CLASS OF 2026</span>
+            </div>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <p style="font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; text-transform: uppercase; line-height: 1.2; margin-bottom: 30px; color: var(--text-color);">
+                    HEYA, I'M IZZAN. A CUM LAUDE INFORMATION SYSTEMS GRADUATE BASED IN PALEMBANG, INDONESIA.
+                </p>
+                
+                <p style="font-size: 1.25rem; line-height: 1.6; color: var(--text-color); opacity: 0.9; margin-bottom: 40px;">
+                    I bridge the gap between complex business processes and human-centered design. With a strong foundation in <strong>System/Data Analysis</strong>, <strong>ERP workflows</strong>, and <strong>HCI Research</strong>, my approach goes beyond mere aesthetics. I build structured, research-driven digital solutions that solve real operational bottlenecks—ensuring technology works seamlessly for the people who use it.
+                </p>
+
+                <a href="#" id="view-cv-link" class="text-link">VIEW RESUME ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="big-footer">
+        <div class="container text-center">
+            <h2 class="giant-text">LET'S TALK</h2>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/izzanhanafi_" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+                <a href="mailto:muhammadizzanfieldi@gmail.com">EMAIL</a>
+                <a href="https://www.linkedin.com/in/muhammadizzanfieldi" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+            </div>
+            <div class="footer-bottom">
+                <p>PALEMBANG, ID</p>
+                <p>© 2026 M. IZZAN FIELDI</p>
+                <a href="#hero">BACK TO TOP ↑</a>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="script.js"></script>
+
+    <div id="cv-modal" class="cv-modal">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    
+    <button class="close-btn" id="close-cv">&times;</button>
+
+    <div class="modal-content">
+        <img src="Asset/CV-Preview.png" alt="Izzan Fieldi CV Resume" class="cv-preview-img">
+        
+        <div class="download-area">
+            <a href="Asset/CV_Muhammad_Izzan_Fieldi_2026.pdf" download class="btn" style="padding: 15px 35px; font-weight: 800; letter-spacing: 1px;" target="_blank" rel="noopener noreferrer">
+                DOWNLOAD OFFICIAL CV (PDF)
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
