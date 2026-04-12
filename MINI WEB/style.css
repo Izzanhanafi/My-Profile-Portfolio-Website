@@ -43,15 +43,6 @@
 }
 
 /* =========================================
-   GLOBAL STYLES
-========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* =========================================
    GLOBAL RESET & ANTI-OVERFLOW (WAJIB ADA)
 ========================================= */
 * {
@@ -316,6 +307,7 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center; 
+    position: relative; /* KUNCI: Menahan elemen absolute agar tidak terbang keluar */
 }
 
 .hero-container {
@@ -604,6 +596,60 @@ nav ul li a:hover {
 }
 
 /* =========================================
+   INLINE PUSH REVEAL (FEATURED WORKS) - FIX DESKTOP
+========================================= */
+
+.inline-img-wrapper {
+    width: 0;
+    opacity: 0;
+    /* KUNCI 1: Hapus overflow: hidden agar bayangan bisa keluar dengan bebas! */
+    overflow: visible; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.8) rotate(-5deg);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: none; /* Mencegah gambar siluman mengganggu kursor */
+}
+
+.inline-img-wrapper img {
+    width: 220px;
+    height: 125px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--text-color);
+    box-shadow: 8px 8px 0px var(--accent-color);
+    box-sizing: border-box;
+}
+
+/* --- ODOO COMING SOON PLACEHOLDER --- */
+.coming-soon-card {
+    width: 220px;
+    height: 125px;
+    background-color: var(--bg-color); 
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'ImpactCustom', Impact, sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    border: 2px solid var(--text-color); 
+    box-shadow: 8px 8px 0px var(--accent-color); 
+    text-transform: uppercase;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.portfolio-row:hover .inline-img-wrapper {
+    /* KUNCI 2: Wrapper dilebarkan menjadi 240px untuk memberi tempat pada gambar 220px + bayangan 8px */
+    width: 240px; 
+    opacity: 1;
+    transform: scale(1) rotate(2deg);
+    pointer-events: auto;
+}
+
+/* =========================================
    RESEARCH & PUBLICATIONS
 ========================================= */
 .research-item {
@@ -790,18 +836,31 @@ nav ul li a:hover {
 }
 
 .tag {
+    /* Mengubah ke inline-flex agar bisa menggunakan align-items */
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* Padding tetap, tapi line-height dipaksa ke 1 agar tidak ada ruang hantu */
+    padding: 12px 25px;
+    line-height: 1; 
+    
     background-color: transparent;
     color: var(--text-color);
-    padding: 12px 25px;
     border: 2px solid var(--text-color);
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Dikecilkan sedikit agar lebih proporsional */
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: crosshair; 
+    cursor: crosshair;
+    
+    /* Mencegah teks membungkus ke bawah di dalam satu bubble */
+    white-space: nowrap; 
 }
+
 
 .tag:hover {
     background-color: var(--text-color);
@@ -1063,22 +1122,45 @@ nav ul li a:hover {
         position: relative;
     }
 
-    /* 2. Skalasi Tipografi */
-    section h2 {
-        font-size: 10vw; 
-        margin-bottom: 25px;
-        line-height: 1.1;
-        text-align: left;
+    /* --- MEGA LOADER MOBILE --- */
+    #counter {
+        font-size: 32vw !important; /* Perbesar angka secara ekstrem di HP */
+        line-height: 1 !important;
+        letter-spacing: -2px !important; /* Rapatkan sedikit antar angkanya */
     }
 
+    /* 2. Skalasi Tipografi */
+    section h2 {
+        font-size: 14vw !important; /* Naikkan dari 10vw ke 14vw agar lebih masif */
+        margin-bottom: 30px !important;
+        line-height: 1.05 !important; /* Rapatkan sedikit jarak atas-bawahnya */
+        text-align: center !important;
+    }
+
+    /* --- HERO NAME MOBILE (2 BARIS DENGAN SPACE CUKUP) --- */
     .hero-name {
-        font-size: 15vw !important; /* Agak dikecilkan sedikit dari 18vw agar tidak pecah batas */
-        flex-wrap: wrap;
-        padding-top: 20px;
-        justify-content: center;
-        width: 100%;
-        max-width: 100vw;
-        overflow: hidden;
+        font-size: 35vw !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        
+        /* Menaikkan line-height agar baris atas dan bawah tidak bersentuhan */
+        line-height: 1.1 !important; 
+        
+        padding-top: 40px !important;
+        text-align: center;
+    }
+
+    /* Memaksa baris pecah di spasi (elemen ke-6) */
+    .hero-name span:nth-child(6) { 
+        flex-basis: 100% !important;
+        /* Memberikan sedikit tinggi tambahan pada 'pemisah' baris jika diperlukan */
+        height: 10px !important; 
+        margin: 0 !important;
+        visibility: hidden;
+    }
+    
+    .hero-container {
+        transform: translateY(-5vh) !important;
     }
 
     /* 3. MUNCULKAN KEMBALI HAMBURGER MENU */
@@ -1115,6 +1197,33 @@ nav ul li a:hover {
 
     .jas-nav.active {
         right: 0; /* Menu muncul saat di-tap */
+    }
+
+    /* 1. Menghilangkan Lokasi dan Jam secara total di HP */
+    .location {
+        display: none !important;
+    }
+
+    /* 2. Mengatur ulang kontainer navigasi agar Logo dan Menu tetap seimbang */
+    .jas-header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    /* 3. Menyesuaikan posisi Logo agar tetap di pojok kiri */
+    .logo {
+        flex-shrink: 0;
+    }
+
+    /* 4. Menyesuaikan posisi Nav-Actions (Moon & Hamburger) di pojok kanan */
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-left: auto;
     }
 
     /* 4. FIX PORTFOLIO ROW (Tumpuk Vertikal agar tidak bocor) */
@@ -1161,8 +1270,41 @@ nav ul li a:hover {
         font-size: 2rem;
     }
 
+    /* --- FEATURED WORKS IMAGE (STATIC MOBILE VIEW) --- */
     .inline-img-wrapper {
-        display: none !important; /* Matikan gambar di HP agar tidak overflow */
+        display: flex !important; 
+        /* KUNCI 3: Lebar 100% dikurangi 10px agar bayangan 6px tidak nabrak/keluar dari pinggir layar HP */
+        width: calc(100% - 10px) !important; 
+        height: auto !important;
+        opacity: 1 !important;    
+        transform: none !important; 
+        margin-top: 15px;
+        margin-bottom: 20px !important;
+        overflow: visible !important; /* Pastikan bayangan tidak terpotong di HP */
+    }
+
+    /* KUNCI 4: MENGGABUNGKAN GAMBAR & KARTU COMING SOON AGAR 100% KEMBAR IDENTIK */
+    .inline-img-wrapper img,
+    .coming-soon-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 180px !important; 
+        object-fit: cover;
+        
+        border: 2px solid var(--text-color) !important; /* Bingkai Hitam Muncul! */
+        box-shadow: 6px 6px 0px var(--accent-color) !important; /* Bayangan Navy Muncul! */
+        
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Penyesuaian khusus tulisan untuk kartu */
+    .coming-soon-card {
+        font-size: 1.5rem;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     /* 5. SKALASI ACADEMIC & EXPERIENCE */
@@ -1179,9 +1321,41 @@ nav ul li a:hover {
         font-size: 1.6rem;
     }
 
+    .tag {
+        padding: 10px 18px; /* Padding lebih kecil untuk layar HP */
+        font-size: 0.75rem; /* Ukuran font lebih kecil agar pas */
+        white-space: normal; /* Izinkan teks turun ke bawah jika sangat panjang di HP */
+        min-height: 40px; /* Memastikan bubble tetap punya tinggi minimal yang konsisten */
+    }
+
     /* 6. SKALASI FOOTER */
+    /* --- ADJUSTMENT SECTION ABOUT (MOBILE) --- */
+    #about-section {
+        padding-top: 80px !important; /* Jarak proporsional dari batas atas halaman */
+        padding-bottom: 60px !important;
+    }
+
+    /* --- ABOUT TITLE MOBILE (MEGA FONT) --- */
     .about-title {
-        font-size: 18vw;
+        /* Menaikkan ukuran secara signifikan */
+        font-size: 24vw !important; 
+        
+        /* Merapatkan baris agar terlihat seperti satu kesatuan blok */
+        line-height: 0.8 !important; 
+        gap: 0.05em !important; 
+        
+        /* Jarak proporsional ke elemen lain */
+        margin-top: 1px !important;
+        margin-bottom: 50px !important;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-image-wrapper {
+        margin-bottom: 50px !important; /* Menyeimbangkan jarak di bawah foto */
     }
 
     .giant-text {
@@ -1195,6 +1369,83 @@ nav ul li a:hover {
         align-items: center;
         gap: 15px;
     }
+
+    /* --- FOOTER BOTTOM (HORIZONTAL, KECIL & SERAGAM PUTIH) --- */
+    .footer-bottom {
+        display: flex !important;
+        flex-direction: row !important; 
+        justify-content: space-between !important; 
+        align-items: center;
+        width: 100%;
+        padding: 20px 10px !important;
+        
+        /* Ukuran teks menyesuaikan layar agar tidak menumpuk */
+        font-size: clamp(0.55rem, 2.5vw, 0.75rem) !important; 
+    }
+
+    .footer-bottom p, 
+    .footer-bottom a {
+        margin: 0;
+        white-space: nowrap !important; 
+        letter-spacing: 0.5px;
+        /* Menggunakan warna putih tulang sesuai tema footer agar seragam */
+        color: var(--bg-color) !important; 
+    }
+
+    .footer-bottom a {
+        text-decoration: none;
+        font-weight: 800;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.3s;
+    }
+
+    .footer-bottom a:hover {
+        border-bottom: 1px solid var(--bg-color);
+    }
+
+    /* =========================================
+       TOUCH & TAPTIC FEEDBACK (MOBILE ONLY)
+    ========================================= */
+    
+    /* Tombol bereaksi seketika saat ditekan */
+    .btn:active, .btn-secondary:active {
+        transform: scale(0.95) !important;
+        opacity: 0.8 !important;
+        transition: transform 0.1s !important; /* Reaksi kilat tanpa delay */
+    }
+
+    /* Bubble Tag langsung merespon jempol */
+    .tag:active {
+        background-color: var(--text-color) !important;
+        color: var(--bg-color) !important;
+        transform: scale(0.95) !important;
+        transition: all 0.1s !important;
+    }
+
+    /* Panah portofolio langsung meluncur saat disentuh */
+    .portfolio-row:active .port-arrow {
+        transform: translate(10px, -10px) !important;
+        color: var(--accent-color) !important;
+        transition: all 0.1s !important;
+    }
+
+    /* Item Academic Impact merespon sentuhan */
+    .impact-brutal-item:active {
+        background-color: var(--text-color) !important;
+        color: var(--bg-color) !important;
+        transform: scale(0.98) !important;
+        transition: all 0.1s !important;
+    }
+    
+    .impact-brutal-item:active .impact-giant-number {
+        color: var(--bg-color) !important;
+    }
+
+    .cv-paper-frame {
+        width: 95vw;
+        height: 70vh;
+    }
+
 }
 
 /* =========================================
@@ -1213,41 +1464,26 @@ nav ul li a:hover {
     width: 100%;
     max-width: 550px; 
     line-height: 0; 
-    border: 4px solid var(--text-color);
-    background-color: var(--border-color);
-    box-shadow: 20px 20px 0px var(--accent-color);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    
+    /* GANTI INI: Hapus semua elemen yang memenjarakan foto */
+    border: none; 
+    background-color: transparent;
+    box-shadow: none; 
+    
     overflow: hidden;
 }
 
 .about-img {
     width: 100%;
-    height: auto;
     display: block;
-    filter: grayscale(100%) contrast(110%);
-    transition: filter 0.6s ease, transform 0.6s ease;
-}
-
-.grain-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    opacity: 0.15;
-    pointer-events: none;
-    mix-blend-mode: overlay;
+    /* Kontras dinaikkan ekstrem agar menyatu keras dengan background */
+    filter: grayscale(100%) contrast(140%);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), filter 0.6s ease;
 }
 
 .about-image-container:hover .about-img {
-    filter: grayscale(0%) contrast(100%);
-    transform: scale(1.03);
-}
-
-.about-image-container:hover {
-    transform: translate(-5px, -5px);
-    box-shadow: 25px 25px 0px var(--accent-color);
+    filter: grayscale(0%) contrast(110%);
+    transform: scale(1.05); /* Membesar perlahan tanpa terhalang bingkai */
 }
 
 .about-caption {
@@ -1261,37 +1497,6 @@ nav ul li a:hover {
     color: var(--accent-color);
     letter-spacing: 2px;
     text-transform: uppercase;
-}
-
-/* =========================================
-   INLINE PUSH REVEAL (FEATURED WORKS)
-========================================= */
-
-/* --- EFEK MUNCUL GAMBAR --- */
-.inline-img-wrapper {
-    width: 0;
-    opacity: 0;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: scale(0.8) rotate(-5deg);
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.inline-img-wrapper img {
-    width: 220px;
-    height: 125px;
-    object-fit: cover;
-    flex-shrink: 0;
-    border: 2px solid var(--text-color);
-    box-shadow: 8px 8px 0px var(--accent-color);
-}
-
-.portfolio-row:hover .inline-img-wrapper {
-    width: 220px;
-    opacity: 1;
-    transform: scale(1) rotate(2deg);
 }
 
 /* =========================================
@@ -1405,4 +1610,44 @@ nav ul li a:hover {
     background: var(--accent-color);
     color: white;
     transform: rotate(90deg);
+}
+
+/* --- RESUME PAPER VIEW STYLING --- */
+.cv-paper-frame {
+    width: 85vw;           /* Lebar responsif */
+    max-width: 900px;      /* Lebar standar kertas A4 di layar besar */
+    height: 80vh;          /* Tinggi proporsional */
+    background: #FFFFFF;   /* Putih kertas murni */
+    
+    /* Efek Kertas: Border tipis dan bayangan lembut agar terlihat seperti lembaran fisik */
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 
+        0 1px 1px rgba(0,0,0,0.11), 
+        0 2px 2px rgba(0,0,0,0.11), 
+        0 4px 4px rgba(0,0,0,0.11), 
+        0 8px 8px rgba(0,0,0,0.11), 
+        0 16px 16px rgba(0,0,0,0.11);
+        
+    overflow: hidden;
+    position: relative;
+    z-index: 10001;
+}
+
+.cv-footer-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn-minimal {
+    font-family: 'ImpactCustom', Impact, sans-serif;
+    font-size: 0.9rem;
+    color: var(--bg-color); /* Warna putih tulang agar kontras di overlay gelap */
+    text-decoration: none;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.btn-minimal:hover {
+    opacity: 1;
 }
