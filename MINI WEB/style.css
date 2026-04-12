@@ -19,6 +19,18 @@
     --muted-text: #94A3B8;   
 }
 
+@font-face {
+    font-family: 'ImpactCustom';
+    src: url('Asset/impact.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Terapkan ke semua elemen yang pakai Impact */
+.hero-name, .giant-text, .port-title, .about-title, .impact-giant-number, section h2 {
+    font-family: 'ImpactCustom', Impact, sans-serif !important;
+}
+
 [data-theme="dark"] {
     /* Background: Biru Slate Gelap */
     --bg-color: #121417; 
@@ -37,6 +49,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* =========================================
+   GLOBAL RESET & ANTI-OVERFLOW (WAJIB ADA)
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important; /* Mencegah padding menambah lebar elemen */
+}
+
+html, body {
+    width: 100%;
+    max-width: 100vw; /* Kunci absolut agar tidak melebihi layar */
+    overflow-x: hidden !important; /* Potong paksa apapun yang keluar jalur kanan-kiri */
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -384,10 +413,11 @@ nav ul li a:hover {
 ========================================= */
 .marquee {
     width: 100%;
+    max-width: 100vw; /* Kunci lebar marquee */
     background-color: var(--text-color);
     color: var(--bg-color);
     padding: 20px 0;
-    overflow: hidden;
+    overflow: hidden !important; /* Potong teks yang berjalan keluar layar */
     white-space: nowrap;
     border-top: 2px solid var(--text-color);
     border-bottom: 2px solid var(--text-color);
@@ -1023,161 +1053,149 @@ nav ul li a:hover {
 }
 
 /* =========================================
-   MEDIA QUERIES (MOBILE)
+   CLEAN MOBILE OPTIMIZATION (ANTI-OVERFLOW)
 ========================================= */
 @media (max-width: 768px) {
-    section h2 {
-        font-size: 14vw; 
-        margin-bottom: 30px;
-        text-align: center; 
+    /* 1. Mencegah layar bisa digeser ke samping (Space Hantu) */
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
     }
-    
-    .jas-header {
-        top: 10px; 
-        padding: 10px 20px;
-        border-radius: 12px; 
+
+    /* 2. Skalasi Tipografi */
+    section h2 {
+        font-size: 10vw; 
+        margin-bottom: 25px;
+        line-height: 1.1;
+        text-align: left;
     }
 
     .hero-name {
-        font-size: 22vw; 
-        flex-wrap: wrap; 
+        font-size: 15vw !important; /* Agak dikecilkan sedikit dari 18vw agar tidak pecah batas */
+        flex-wrap: wrap;
+        padding-top: 20px;
         justify-content: center;
-        line-height: 0.95; 
-        margin-top: 30px; 
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
     }
 
-    .hero-name span:nth-child(6) {
-        flex-basis: 100%;
-        height: 0;
-        margin: 0; 
-    }
-
+    /* 3. MUNCULKAN KEMBALI HAMBURGER MENU */
     .hamburger {
-        display: flex; 
+        display: flex !important; /* Memastikan tombol garis tiga muncul */
+        z-index: 2000;
     }
 
-    .hero-footer {
-        font-size: 1rem; 
-        gap: 10px; 
-    }
-
-    .location {
-        display: none;
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
     }
 
     .jas-nav {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 70%;
+        right: -100%; /* Sembunyi di luar layar */
+        width: 80%;
         max-width: 300px;
         height: 100vh;
-        
         background-color: var(--nav-bg);
-        backdrop-filter: blur(30px) saturate(150%);
-        -webkit-backdrop-filter: blur(30px) saturate(150%);
-        box-shadow: -15px 0 30px rgba(0, 0, 0, 0.1);
-        
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
         border-left: 1px solid var(--border-color);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: flex-start;
-        
-        padding: 25px 40px; 
-        gap: 25px; 
-        
+        padding: 100px 40px;
+        gap: 25px;
         transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-        z-index: 999;
+        z-index: 1500;
     }
 
     .jas-nav.active {
-        right: 0;
+        right: 0; /* Menu muncul saat di-tap */
     }
 
-    .jas-nav li {
-        list-style: none;
-        width: 100%;
-    }
-
-    .jas-nav li a {
-        display: block; 
-        font-size: 1.2rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        color: var(--text-color);
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
-    }
-
-    .jas-nav li a:hover {
-        opacity: 1; 
-        color: var(--accent-color); 
-        transform: translateX(15px); 
-    }
-
-    .hamburger.toggle span:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-    .hamburger.toggle span:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger.toggle span:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -7px);
-    }
-
-    .giant-text { 
-        font-size: 25vw; 
-    }
-    
-    .about-title {
-        font-size: 20vw; 
-        gap: 0.1em; 
-        width: 100%;
-        text-align: center;
-    }
-
-    /* Perkecil jarak antar section */
-    section {
-        padding: 60px 0;
-    }
-
-    /* Sesuaikan ukuran Judul Section */
-    section h2 {
-        font-size: 10vw; /* Lebih manusiawi namun tetap bold */
-        margin-bottom: 25px;
-    }
-
-    /* Rombak Portfolio Row jadi Vertikal */
+    /* 4. FIX PORTFOLIO ROW (Tumpuk Vertikal agar tidak bocor) */
     .portfolio-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: 15px;
         padding: 25px 0;
+        gap: 15px;
+        width: 100%;
+        flex-wrap: wrap; /* Izinkan teks turun ke bawah */
     }
 
     .port-left-group {
-        max-width: 100%;
+        width: 100%;
         margin-right: 0;
     }
 
+    .port-title-wrapper {
+        gap: 15px;
+    }
+
+    .port-title {
+        font-size: 1.8rem;
+        white-space: normal; /* KUNCI: Biarkan judul turun ke bawah (wrap) */
+        word-break: break-word;
+        line-height: 1.1;
+        overflow: visible;
+        text-overflow: clip;
+    }
+
     .port-tags {
-        margin-left: 0; /* Tag kembali ke kiri agar rapi di layar sempit */
+        margin-left: 0; /* Reset margin agar rata kiri */
         font-size: 0.85rem;
+        margin-top: 5px;
     }
 
-    /* Sembunyikan gambar inline di HP agar tidak berantakan */
-    .inline-img-wrapper {
-        display: none; 
-    }
-
-    /* Pastikan Panah tetap terlihat di kanan bawah */
     .port-right-group {
         width: 100%;
-        justify-content: flex-end;
+        justify-content: flex-end; /* Panah tetap di kanan bawah */
         margin-left: 0;
     }
-} /* <-- INI ADALAH KURUNG PENUTUP MEDIA QUERY YANG SEMPAT HILANG */
 
+    .port-arrow {
+        font-size: 2rem;
+    }
+
+    .inline-img-wrapper {
+        display: none !important; /* Matikan gambar di HP agar tidak overflow */
+    }
+
+    /* 5. SKALASI ACADEMIC & EXPERIENCE */
+    .impact-giant-number {
+        font-size: 4rem; 
+    }
+
+    .impact-brutal-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .exp-role {
+        font-size: 1.6rem;
+    }
+
+    /* 6. SKALASI FOOTER */
+    .about-title {
+        font-size: 18vw;
+    }
+
+    .giant-text {
+        font-size: 18vw !important; /* Jinakkan teks raksasa di footer */
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}
 
 /* =========================================
    ABOUT IMAGE - VERSI STABIL & FIX
