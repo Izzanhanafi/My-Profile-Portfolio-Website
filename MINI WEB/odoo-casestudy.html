@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odoo ERP Case Study - M. Izzan Fieldi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css?v=26.0">
+    <style>
+        /* Menggunakan style yang sama persis dengan wms-casestudy.html agar konsisten */
+        .cs-heading { font-family: 'ImpactCustom', Impact, sans-serif; text-transform: uppercase; line-height: 0.9; letter-spacing: -1px; }
+        .cs-hero { min-height: 80vh; display: flex; align-items: center; background-color: var(--secondary-bg); border-bottom: 2px solid var(--text-color); padding-top: 150px; }
+        .cs-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .cs-hero-text h1 { font-size: clamp(3.5rem, 7vw, 6rem); margin-bottom: 20px; }
+        .cs-hero-subtitle { font-size: 1.2rem; max-width: 600px; margin-bottom: 40px; font-weight: 500; line-height: 1.6; }
+        .cs-hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 2px solid var(--border-color); padding-top: 20px; margin-top: 40px; }
+        .cs-meta-item strong { display: block; color: var(--accent-color); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 5px; }
+        .cs-hero-viz { position: relative; }
+        .cs-hero-img { width: 110%; height: auto; border: 4px solid var(--text-color); box-shadow: 15px 15px 0px var(--accent-color); transform: rotate(2deg); transition: transform 0.3s ease; }
+        .cs-hero-viz:hover .cs-hero-img { transform: rotate(0deg) scale(1.02); }
+        .cs-ch-app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; }
+        .cs-section-title { font-size: 2.5rem; margin-bottom: 25px; border-bottom: 4px solid var(--accent-color); display: inline-block; padding-bottom: 5px; }
+        .cs-list { margin-top: 20px; list-style: none; }
+        .cs-list li { position: relative; padding-left: 30px; margin-bottom: 15px; line-height: 1.7; }
+        .cs-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
+        .cs-visuals { background-color: var(--text-color); color: var(--bg-color); }
+        .cs-visuals-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 50px; }
+        .cs-vis-large img { width: 100%; height: auto; border: 2px solid var(--bg-color); transition: transform 0.3s ease; }
+        .cs-vis-large img:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .cs-impact { background-color: #111; color: #fff; }
+        .cs-impact .container h2 { color: #fff; text-align: center; margin-bottom: 60px; }
+        .cs-impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .cs-impact-item { padding: 50px 30px; border: 3px solid #fff; text-align: center; transition: all 0.3s ease; }
+        .cs-impact-item:hover { background-color: #fff; color: #111; transform: translateY(-10px); box-shadow: 10px 10px 0px var(--accent-color); }
+        .cs-giant-num { font-family: 'ImpactCustom', Impact, sans-serif; font-size: 6rem; line-height: 1; color: var(--accent-color); margin-bottom: 15px; display: block; }
+        .cs-impact-item:hover .cs-giant-num { color: #111; }
+        .logo:hover { opacity: 0.7; cursor: pointer; }
+        @media (max-width: 992px) { .cs-hero-grid { grid-template-columns: 1fr; text-align: center; } .cs-hero-viz { order: -1; margin-bottom: 40px; } .cs-hero-img { width: 100%; transform: rotate(0deg); box-shadow: 8px 8px 0px var(--accent-color); } .cs-hero-meta { justify-content: center; } }
+    </style>
+</head>
+<body>
+
+    <header class="jas-header" id="header">
+        <nav class="container">
+            <a href="index.html" class="logo" style="text-decoration: none; color: var(--text-color); font-weight: 800; transition: opacity 0.3s;">
+                Back to Home
+            </a>
+
+            <ul class="jas-nav" id="nav-menu">
+                <li><a href="index.html#hero">HOME</a></li>
+                <li><a href="index.html#portfolio-section">PORTFOLIO</a></li>
+                <li><a href="index.html#about-section">ABOUT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="cs-hero" class="cs-hero">
+        <div class="container cs-hero-grid">
+            <div class="cs-hero-text">
+                <p style="color: var(--accent-color); font-weight: bold; letter-spacing: 2px; text-transform: uppercase;">02 / Featured Case Study</p>
+                <h1 class="cs-heading">Telecom Logistics ERP</h1>
+                <p class="cs-hero-subtitle">
+                    Digital transformation for PT. Artha Telco Solusi (Simulated). Implementing Odoo ERP to streamline regional warehouse (STO) logistics, ensuring real-time asset accuracy and operational efficiency.
+                </p>
+                
+                <div class="cs-hero-meta">
+                    <div class="cs-meta-item">
+                        <strong>Role</strong>
+                        <span>ERP Functional Consultant</span>
+                    </div>
+                    <div class="cs-meta-item">
+                        <strong>Method</strong>
+                        <span>SDLC, BPMN Mapping</span>
+                    </div>
+                    <div class="cs-meta-item">
+                        <strong>Platform</strong>
+                        <span>Odoo ERP Community</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cs-hero-viz">
+                <img src="Asset/BPMN-Flow.png" alt="Integrated Task Flow" class="cs-hero-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container cs-ch-app-grid">
+            
+            <div class="cs-challenge">
+                <h3 class="cs-heading cs-section-title">Operational Pain Points</h3>
+                <p>
+                    Through an As-Is business process observation, several critical bottlenecks were identified in the existing logistics management:
+                </p>
+                <ul class="cs-list">
+                    <li><strong>Inaccurate Reporting:</strong> Lack of automated export features during Cycle Counting led to heavy reliance on error-prone manual data entry.</li>
+                    <li><strong>Traceability Gap:</strong> Weak tracking systems for reverse logistics (returned goods) caused discrepancies between physical stock and system records.</li>
+                    <li><strong>UI/UX Rigidity:</strong> The legacy system's interface slowed down administrators during high-speed scanning operations.</li>
+                </ul>
+            </div>
+
+            <div class="cs-approach">
+                <h3 class="cs-heading cs-section-title">The SDLC Approach</h3>
+                <p>
+                    I utilized the Systems Development Life Cycle (SDLC) framework to ensure the engineered solution precisely answered the business needs:
+                </p>
+                <ul class="cs-list">
+                    <li><strong>System Design (To-Be Process):</strong> Mapped an Integrated Task Flow using BPMN to standardize receiving, distribution, and stock opname.</li>
+                    <li><strong>Configuration:</strong> Deployed Odoo ERP Community Edition, integrating Unique Serial Number tracking for hardware.</li>
+                    <li><strong>Validation:</strong> Conducted end-to-end logistics scenario testing to validate data integrity and reporting functionality.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="section-padding cs-visuals">
+        <div class="container">
+            <h2 class="cs-heading" style="color: var(--bg-color); text-align: center;">Odoo System Configuration</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto; color: #aaa; margin-bottom: 40px;">Solving traceability and reporting issues through targeted module implementation.</p>
+            
+            <div class="cs-visuals-grid">
+                <div class="cs-vis-large">
+                    <img src="Asset/Odoo-Audit-Trail.png" alt="Odoo Audit Trail">
+                    <h3 class="cs-heading" style="color: var(--bg-color); margin-top: 15px; font-size: 1.5rem;">End-to-End Asset Traceability</h3>
+                    <p style="font-size: 1rem; color: #ccc;">Activated the Unique Serial Number feature to guarantee 100% accuracy in tracking device history—from vendor inbound, distribution, to reverse logistics.</p>
+                </div>
+                
+                <div class="cs-vis-large" style="margin-top: 40px;">
+                    <img src="Asset/Odoo-Stock-Opname.png" alt="Automated Stock Opname">
+                    <h3 class="cs-heading" style="color: var(--bg-color); margin-top: 15px; font-size: 1.5rem;">Automated Stock Opname</h3>
+                    <p style="font-size: 1rem; color: #ccc;">Configured the Inventory Adjustment module to eliminate manual recording, featuring instant dynamic exports to Excel formats for immediate audit readiness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding cs-impact">
+        <div class="container">
+            <h2 class="cs-heading">Business Value Delivery</h2>
+            <p style="text-align: center; max-width: 700px; margin: -40px auto 60px auto; font-size: 1.2rem; opacity: 0.8;">
+                The strategic impact of the ERP implementation on PT. Artha Telco Solusi's regional operations.
+            </p>
+
+            <div class="cs-impact-grid">
+                <div class="cs-impact-item">
+                    <span class="cs-giant-num">100%</span>
+                    <h3 class="cs-heading" style="font-size: 1.5rem;">Data Integrity</h3>
+                    <p>Guaranteed stock accuracy bridging physical and system data via unique serial number tracking.</p>
+                </div>
+                
+                <div class="cs-impact-item">
+                    <span class="cs-giant-num">95%</span>
+                    <h3 class="cs-heading" style="font-size: 1.5rem;">Faster Reporting</h3>
+                    <p>Increase in operational speed compared to legacy manual processes and data entry.</p>
+                </div>
+                
+                <div class="cs-impact-item">
+                    <span class="cs-giant-num">READY</span>
+                    <h3 class="cs-heading" style="font-size: 1.5rem;">For Scalability</h3>
+                    <p>Created standardized operational workflows ready to be replicated across future STO branches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="big-footer" style="padding-top: 50px;">
+        <div class="container text-center">
+            <div class="footer-bottom">
+                <p>PALEMBANG, ID</p>
+                <p>© 2026 M. IZZAN FIELDI</p>
+                <a href="index.html">← BACK TO HOME</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
