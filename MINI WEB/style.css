@@ -1782,3 +1782,102 @@ nav ul li a:hover {
         flex-direction: column;
     }
 }
+
+/* =========================================
+   LICENSES & CERTIFICATIONS
+========================================= */
+.cert-section-title {
+    margin-top: 100px;
+    text-align: center;
+    border-bottom: 2px solid var(--text-color);
+    padding-bottom: 20px;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.cert-card {
+    border: 2px solid var(--text-color);
+    padding: 30px;
+    background-color: transparent;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+}
+
+.cert-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 8px 8px 0px var(--accent-color);
+}
+
+.cert-category-title {
+    font-family: 'ImpactCustom', Impact, sans-serif;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.cert-list {
+    list-style: none;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Mengubah susunan list menjadi flexbox agar teks dan tombol sejajar */
+.cert-list li {
+    margin-bottom: 15px;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.cert-info {
+    flex-grow: 1;
+}
+
+.cert-list li strong {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    display: block;
+}
+
+.cert-list li span {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #777;
+    text-transform: uppercase;
+}
+
+[data-theme="dark"] .cert-list li span {
+    color: #aaa;
+}
+
+/* Desain Tombol VIEW */
+.cert-link {
+    font-family: 'ImpactCustom', Impact, sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 2px solid var(--text-color);
+    padding: 4px 10px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+}
+
+.cert-link:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 0px var(--accent-color);
+}
