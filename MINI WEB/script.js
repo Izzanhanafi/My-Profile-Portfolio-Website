@@ -308,4 +308,35 @@ document.addEventListener("DOMContentLoaded", () => {
     if (closeCvBtn) closeCvBtn.addEventListener('click', closeFunc);
     if (overlay) overlay.addEventListener('click', closeFunc);
 
+// --- F. CERTIFICATE IMAGE MODAL LOGIC ---
+    const certModal = document.getElementById('cert-modal');
+    const certPreviewImg = document.getElementById('cert-preview-img');
+    const viewCertBtns = document.querySelectorAll('.view-cert-btn');
+    const closeCertBtn = document.getElementById('close-cert-btn');
+    const certOverlay = document.getElementById('cert-modal-overlay');
+
+    if (certModal && viewCertBtns.length > 0) {
+        viewCertBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const imgSrc = btn.getAttribute('data-cert');
+                if (imgSrc && imgSrc !== "#") {
+                    certPreviewImg.src = imgSrc;
+                    certModal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; 
+                } else {
+                    alert("Gambar sertifikat sedang disiapkan! Jangan lupa masukkan gambar ke folder Asset.");
+                }
+            });
+        });
+
+        const closeCertModal = () => {
+            certModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; 
+            setTimeout(() => { certPreviewImg.src = ""; }, 300); 
+        };
+
+        if (closeCertBtn) closeCertBtn.addEventListener('click', closeCertModal);
+        if (certOverlay) certOverlay.addEventListener('click', closeCertModal);
+    }
+
 }); // <-- INI ADALAH PENUTUP DOMContentLoaded YANG BENAR (Paling Bawah File!)
